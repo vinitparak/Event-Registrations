@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style type="text/css">
+        {% block style %}
+
+        {% endblock %}
+        .navbar-end {
+            margin-right: 20px;
+        }
+        nav {
+            color: #000000;
+        }
+    </style>
+
+    {% load staticfiles %}
+
+    {% block scripts %}
+
+    {% endblock %}
+
+</head>
+<body>
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            OurWebsite
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+           data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu">
+
+        <div class="navbar-start">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    Add Event
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="/public_event">
+                        Public event
+                    </a>
+                    <a class="navbar-item" href="/private_event">
+                        Private Event
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    {{ request.user }}
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="/user/">
+                        My Posts
+                    </a>
+
+                    <a class="navbar-item" href="/registered">
+                        Registered event
+                    </a>
+
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="/logout">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>
